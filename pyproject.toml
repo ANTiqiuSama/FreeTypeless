@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "freetypeless"
+dynamic = ["version"]
+description = "自由开源的 Windows AI 语音输入（Typeless 平替），基于小米 MiMo ASR + LLM"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "sounddevice>=0.4.6",
+  "requests>=2.31",
+  "pynput>=1.7.6",
+  "pystray>=0.19.5",
+  "Pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyinstaller>=6.5"]
+
+[project.scripts]
+freetypeless-cli = "freetypeless.app:main"
+
+[project.gui-scripts]
+freetypeless = "freetypeless.app:main"
+
+[tool.setuptools]
+packages = ["freetypeless"]
+
+[tool.setuptools.dynamic]
+version = { attr = "freetypeless.__version__" }
